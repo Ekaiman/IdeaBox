@@ -46,6 +46,31 @@ hr {
 
 .bottom-grid {
   background-color: #EAEAF4;
+  height: 65%;
+  margin-left: 25%;
+}
+
+.grid-container {
+  /* display: grid;
+  grid-gap: 20px;
+  display: inline-grid;
+  grid-template-columns: auto;
+  border-color: black; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #EAEAF4;
+  padding: 10px;
+  grid-gap: 20px
+}
+
+.idea-card {
+  width: 300px;
+  height:180px;
+  border-color: black;
+  background-color: white;
+
+
+
 }
 
 .box {
@@ -91,7 +116,7 @@ hr {
   margin-bottom: 25px;
   box-shadow: none;
   border-style: solid;
-  /* margin-left: 20px; */
+  margin-left: 20px;
   /* display: inline-block; */
 }
 
