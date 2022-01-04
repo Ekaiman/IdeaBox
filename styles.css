@@ -1,0 +1,29 @@
+html {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.left-grid {
+  background-color: #1F1F3D;
+  width: 25%;
+  height: 100%;
+  /* box-sizing: content-box; */
+  /* display: grid; */
+  /* float: left; */
+  position: fixed;
+  /* grid-area: menu; */
+  margin: 0;
+  /* margin-right: 75%; */
+}
+
+.top-grid {
+  background-color: #A9AAD2;
+}
+
+.bottom-grid {
+  background-color: #EAEAF4;
+}
