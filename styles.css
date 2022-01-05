@@ -41,7 +41,6 @@ hr {
   height: 45%;
   margin-left: 25%;
   text-align: center;
-
 }
 
 .bottom-grid {
@@ -65,12 +64,11 @@ hr {
 
 .idea-card {
   width: 300px;
-  height:325px;
+  height: 325px;
   border-color: #1F1F3D;
   background-color: white;
   border-style: solid;
   border-width: 2px;
-
 }
 
 .idea-card-top {
@@ -82,23 +80,26 @@ hr {
 
 .idea-card-bottom {
   background-color: #5356A4;
-  width: 300px;
+  width: 290px;
   height: 30px;
   vertical-align: bottom;
-  color: #E9E9F3
+  color: #E9E9F3;
+  padding-left: 10px;
 }
 
 .idea-card-title {
-font-size: 20px;
-padding-left: 10px;
-font-family: 'Open Sans', Bold;
+  font-size: 26px;
+  padding-left: 10px;
+  font-family: 'Open Sans', Bold;
 }
 
 .idea-card-body{
-  font-size: 20px;
+  font-size: 26px;
   font-family: 'Open Sans', Light;
   padding-left: 10px;
+  
 }
+
 .box {
   border-color: #1F1F3D;
   border-width: 1px;
