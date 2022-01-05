@@ -18,6 +18,11 @@ hr {
   border: none;
 }
 
+img {
+  height: 28px;
+  width: 28px;
+}
+
 .header-text {
   font-family: 'Open Sans', Bold;
   color: #E9E9F3;
@@ -50,11 +55,6 @@ hr {
 }
 
 .grid-container {
-  /* display: grid;
-  grid-gap: 20px;
-  display: inline-grid;
-  grid-template-columns: auto;
-  border-color: black; */
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: #EAEAF4;
@@ -71,7 +71,6 @@ hr {
   border-width: 2px;
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
 }
 
 .idea-card-top {
@@ -80,18 +79,18 @@ hr {
   height: 35px;
   vertical-align: top;
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .idea-card-bottom {
   background-color: #5356A4;
-  width: 290px;
+  width: 300px;
   height: 35px;
   vertical-align: bottom;
   color: #E9E9F3;
-  padding-left: 10px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .idea-card-title {
@@ -110,7 +109,6 @@ hr {
   margin-top: 0;
   margin-bottom: 0px;
   font-family: 'Open Sans', Light;
-  /* padding-left: 10px; */
   height: 200px;
 
 }
