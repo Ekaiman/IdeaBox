@@ -69,35 +69,50 @@ hr {
   background-color: white;
   border-style: solid;
   border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
 }
 
 .idea-card-top {
   background-color: #1F1F3d;
   width: 300px;
-  height: 30px;
+  height: 35px;
   vertical-align: top;
+  display: flex;
+  align-items: flex-start;
 }
 
 .idea-card-bottom {
   background-color: #5356A4;
   width: 290px;
-  height: 30px;
+  height: 35px;
   vertical-align: bottom;
   color: #E9E9F3;
   padding-left: 10px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .idea-card-title {
-  font-size: 26px;
-  padding-left: 10px;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-top: 5px;
+  /* padding-left: 10px; */
   font-family: 'Open Sans', Bold;
 }
 
+
 .idea-card-body{
-  font-size: 26px;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-right: 30px;
+  margin-top: 0;
+  margin-bottom: 0px;
   font-family: 'Open Sans', Light;
-  padding-left: 10px;
-  
+  /* padding-left: 10px; */
+  height: 200px;
+
 }
 
 .box {
