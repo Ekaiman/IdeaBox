@@ -18,6 +18,11 @@ hr {
   border: none;
 }
 
+img {
+  height: 28px;
+  width: 28px;
+}
+
 .header-text {
   font-family: 'Open Sans', Bold;
   color: #E9E9F3;
@@ -50,11 +55,6 @@ hr {
 }
 
 .grid-container {
-  /* display: grid;
-  grid-gap: 20px;
-  display: inline-grid;
-  grid-template-columns: auto;
-  border-color: black; */
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: #EAEAF4;
@@ -69,35 +69,48 @@ hr {
   background-color: white;
   border-style: solid;
   border-width: 2px;
+  display: flex;
+  flex-direction: column;
 }
 
 .idea-card-top {
   background-color: #1F1F3d;
   width: 300px;
-  height: 30px;
+  height: 35px;
   vertical-align: top;
+  display: flex;
+  justify-content: space-between;
 }
 
 .idea-card-bottom {
   background-color: #5356A4;
-  width: 290px;
-  height: 30px;
+  width: 300px;
+  height: 35px;
   vertical-align: bottom;
   color: #E9E9F3;
-  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .idea-card-title {
-  font-size: 26px;
-  padding-left: 10px;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-top: 5px;
+  /* padding-left: 10px; */
   font-family: 'Open Sans', Bold;
 }
 
+
 .idea-card-body{
-  font-size: 26px;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-right: 30px;
+  margin-top: 0;
+  margin-bottom: 0px;
   font-family: 'Open Sans', Light;
-  padding-left: 10px;
-  
+  height: 200px;
+
 }
 
 .box {
