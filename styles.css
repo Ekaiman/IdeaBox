@@ -65,7 +65,7 @@ hr {
 
 .idea-card {
   width: 300px;
-  height:180px;
+  height:325px;
   border-color: #1F1F3D;
   background-color: white;
   border-style: solid;
@@ -88,10 +88,17 @@ hr {
   color: #E9E9F3
 }
 
-.idea-card-middle {
-  
+.idea-card-title {
+font-size: 20px;
+padding-left: 10px;
+font-family: 'Open Sans', Bold;
 }
 
+.idea-card-body{
+  font-size: 20px;
+  font-family: 'Open Sans', Light;
+  padding-left: 10px;
+}
 .box {
   border-color: #1F1F3D;
   border-width: 1px;
