@@ -5,7 +5,8 @@ var titleValue = document.getElementById('title-value');
 var bodyValue = document.getElementById('body-value');
 var saveButton = document.getElementById('save-button');
 var ideaCardGrid = document.querySelector('.grid-container');
-var deleteButton= document.querySelector('.delete');
+var deleteButton = document.querySelector('.delete');
+var ideaCard = document.querySelector('.idea-card')
 
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', function(event){
@@ -17,8 +18,16 @@ if (!titleValue.value && !bodyValue.value) {
 
 });
 
-saveButton.addEventListener('mouseout', mouseLeaving)
-deleteButton.addEventListener('click', deleteIdea)
+saveButton.addEventListener('mouseout', mouseLeaving);
+ideaCardGrid.addEventListener('click', function(event) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].id.toString() === event.target.id) {
+     list.splice(i, 1)
+     }
+   }
+})
+
+
 function saveIdea() {
   event.preventDefault();
 
@@ -59,7 +68,8 @@ function mouseLeaving() {
 }
 
 function deleteIdea() {
-  var targetIdeaCard = event.target.parentNode.id;
+  event.preventDefault()
+  var targetIdeaCard = event.target.id;
 
   for (var i = 0; i < list.length; i++) {
     if (list[i].id.toString() === targetIdeaCard) {
