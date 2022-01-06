@@ -175,3 +175,7 @@ img {
   display: flex;
   flex-direction: row;
 }
+
+.remove {
+  display: none;
+}

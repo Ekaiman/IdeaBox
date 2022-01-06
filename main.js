@@ -5,7 +5,8 @@ var titleValue = document.getElementById('title-value');
 var bodyValue = document.getElementById('body-value');
 var saveButton = document.getElementById('save-button');
 var ideaCardGrid = document.querySelector('.grid-container');
-var deleteButton= document.querySelector('.delete');
+var deleteButton = document.querySelector('.delete');
+var ideaCard = document.querySelector('.idea-card')
 
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', function(event){
@@ -17,8 +18,19 @@ if (!titleValue.value && !bodyValue.value) {
 
 });
 
-saveButton.addEventListener('mouseout', mouseLeaving)
-deleteButton.addEventListener('click', deleteIdea)
+saveButton.addEventListener('mouseout', mouseLeaving);
+ideaCardGrid.addEventListener('click', function(event) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].id.toString() === event.target.id) {
+     list.splice(i, 1)
+
+     // removeIdea()
+     displayAllIdeas()
+     }
+   }
+})
+
+
 function saveIdea() {
   event.preventDefault();
 
@@ -27,26 +39,27 @@ function saveIdea() {
 
   if(newTitle && newBody) {
     newIdea = new Idea(newTitle, newBody);
-    displayNewIdea();
+    list.push(newIdea);
+    displayAllIdeas();
   }
 
-  list.push(newIdea);
   emptyInput();
 }
 
-function displayNewIdea() {
-  var cardHTML = `<section class="idea-card">
+function displayAllIdeas() {
+  ideaCardGrid.innerHTML = ''
+  for (var i = 0; i < list.length; i++) {
+
+  ideaCardGrid.innerHTML += `<section class="idea-card">
     <header class="idea-card-top">
       <img type="image" src="./assets/star-active.svg" alt="active star">
-      <img type="image" src="./assets/delete.svg" alt="delete" id=${newIdea.id} class="delete">
+      <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
     </header>
-      <h3 class="idea-card-title">${newIdea.title}</h3>
-      <p class="idea-card-body">${newIdea.body}</p>
+      <h3 class="idea-card-title">${list[i].title}</h3>
+      <p class="idea-card-body">${list[i].body}</p>
     <footer class="idea-card-bottom">
       <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-  </section>`;
-
-  ideaCardGrid.innerHTML += cardHTML;
+  </section>`}
 }
 
 function emptyInput() {
@@ -58,12 +71,6 @@ function mouseLeaving() {
   saveButton.classList.remove('hover-button')
 }
 
-function deleteIdea() {
-  var targetIdeaCard = event.target.parentNode.id;
-
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].id.toString() === targetIdeaCard) {
-     list.splice(i, 1);
-     }
-   };
+function removeIdea() {
+  ideaCardGrid.classList.toggle('remove')
 }
