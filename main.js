@@ -1,34 +1,16 @@
 var list = [];
-var newIdea;
 
 var titleValue = document.getElementById('title-value');
 var bodyValue = document.getElementById('body-value');
 var saveButton = document.getElementById('save-button');
 var ideaCardGrid = document.querySelector('.grid-container');
 var deleteButton = document.querySelector('.delete');
-var ideaCard = document.querySelector('.idea-card')
+var ideaCard = document.querySelector('.idea-card');
 
 saveButton.addEventListener('click', saveIdea);
-saveButton.addEventListener('mouseover', function(event){
-if (!titleValue.value && !bodyValue.value) {
-  //button should change to lighter color
-  saveButton.classList.add('hover-button')
-  //cursor is not a pointer
-}
-
-});
-
+saveButton.addEventListener('mouseover', mouseHoverEffect);
 saveButton.addEventListener('mouseout', mouseLeaving);
-ideaCardGrid.addEventListener('click', function(event) {
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].id.toString() === event.target.id) {
-     list.splice(i, 1)
-
-     // removeIdea()
-     displayAllIdeas()
-     }
-   }
-})
+ideaCardGrid.addEventListener('click', deleteSelectedCard);
 
 
 function saveIdea() {
@@ -38,7 +20,7 @@ function saveIdea() {
   var newBody = bodyValue.value;
 
   if(newTitle && newBody) {
-    newIdea = new Idea(newTitle, newBody);
+    var newIdea = new Idea(newTitle, newBody);
     list.push(newIdea);
     displayAllIdeas();
   }
@@ -47,19 +29,20 @@ function saveIdea() {
 }
 
 function displayAllIdeas() {
-  ideaCardGrid.innerHTML = ''
-  for (var i = 0; i < list.length; i++) {
+  ideaCardGrid.innerHTML = '';
 
-  ideaCardGrid.innerHTML += `<section class="idea-card">
-    <header class="idea-card-top">
-      <img type="image" src="./assets/star-active.svg" alt="active star">
-      <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
-    </header>
+  for (var i = 0; i < list.length; i++) {
+    ideaCardGrid.innerHTML += `
+    <section class="idea-card">
+      <header class="idea-card-top">
+        <img type="image" src="./assets/star-active.svg" alt="active star">
+        <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
+      </header>
       <h3 class="idea-card-title">${list[i].title}</h3>
       <p class="idea-card-body">${list[i].body}</p>
-    <footer class="idea-card-bottom">
-      <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-  </section>`}
+      <footer class="idea-card-bottom">
+        <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
+    </section>`}
 }
 
 function emptyInput() {
@@ -67,10 +50,25 @@ function emptyInput() {
   bodyValue.value = '';
 }
 
+function mouseHoverEffect() {
+  if (!titleValue.value && !bodyValue.value) {
+    saveButton.classList.add('hover-button');
+  }
+}
+
 function mouseLeaving() {
-  saveButton.classList.remove('hover-button')
+  saveButton.classList.remove('hover-button');
 }
 
 function removeIdea() {
-  ideaCardGrid.classList.toggle('remove')
+  ideaCardGrid.classList.toggle('remove');
+}
+
+function deleteSelectedCard() {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].id.toString() === event.target.id) {
+     list.splice(i, 1);
+     displayAllIdeas();
+     }
+   }
 }
