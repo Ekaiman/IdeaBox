@@ -7,6 +7,15 @@ var saveButton = document.getElementById('save-button');
 var ideaCardGrid = document.querySelector('.grid-container')
 
 saveButton.addEventListener('click', saveIdea);
+saveButton.addEventListener('mouseover', function(event){
+if (!titleValue.value && !bodyValue.value) {
+  //button should change to lighter color
+  saveButton.classList.add('hover-button')
+  //cursor is not a pointer
+}
+
+});
+saveButton.addEventListener('mouseout', mouseLeaving)
 
 function saveIdea() {
   event.preventDefault();
@@ -41,4 +50,8 @@ function displayNewIdea() {
 function emptyInput() {
   titleValue.value = '';
   bodyValue.value = '';
+}
+
+function mouseLeaving() {
+  saveButton.classList.remove('hover-button')
 }

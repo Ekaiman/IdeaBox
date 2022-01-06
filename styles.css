@@ -140,6 +140,11 @@ img {
   height: 25px;
 }
 
+.hover-button {
+  background-color: #808080;
+  cursor: not-allowed;
+}
+
 .search-button {
   height: 25px;
   width: 25px;
