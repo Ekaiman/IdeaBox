@@ -23,6 +23,9 @@ ideaCardGrid.addEventListener('click', function(event) {
   for (var i = 0; i < list.length; i++) {
     if (list[i].id.toString() === event.target.id) {
      list.splice(i, 1)
+     list = []
+     // removeIdea()
+     displayNewIdea()
      }
    }
 })
@@ -44,16 +47,18 @@ function saveIdea() {
 }
 
 function displayNewIdea() {
+  for (var i = 0; i < list.length; i++) {
+
   var cardHTML = `<section class="idea-card">
     <header class="idea-card-top">
       <img type="image" src="./assets/star-active.svg" alt="active star">
-      <img type="image" src="./assets/delete.svg" alt="delete" id=${newIdea.id} class="delete">
+      <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
     </header>
-      <h3 class="idea-card-title">${newIdea.title}</h3>
-      <p class="idea-card-body">${newIdea.body}</p>
+      <h3 class="idea-card-title">${list[i].title}</h3>
+      <p class="idea-card-body">${list[i].body}</p>
     <footer class="idea-card-bottom">
       <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-  </section>`;
+  </section>`}
 
   ideaCardGrid.innerHTML += cardHTML;
 }
@@ -67,13 +72,6 @@ function mouseLeaving() {
   saveButton.classList.remove('hover-button')
 }
 
-function deleteIdea() {
-  event.preventDefault()
-  var targetIdeaCard = event.target.id;
-
-  for (var i = 0; i < list.length; i++) {
-    if (list[i].id.toString() === targetIdeaCard) {
-     list.splice(i, 1);
-     }
-   };
+function removeIdea() {
+  ideaCardGrid.classList.toggle('remove')
 }
