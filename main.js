@@ -23,9 +23,9 @@ ideaCardGrid.addEventListener('click', function(event) {
   for (var i = 0; i < list.length; i++) {
     if (list[i].id.toString() === event.target.id) {
      list.splice(i, 1)
-     list = []
+
      // removeIdea()
-     displayNewIdea()
+     displayAllIdeas()
      }
    }
 })
@@ -39,17 +39,18 @@ function saveIdea() {
 
   if(newTitle && newBody) {
     newIdea = new Idea(newTitle, newBody);
-    displayNewIdea();
+    list.push(newIdea);
+    displayAllIdeas();
   }
 
-  list.push(newIdea);
   emptyInput();
 }
 
-function displayNewIdea() {
+function displayAllIdeas() {
+  ideaCardGrid.innerHTML = ''
   for (var i = 0; i < list.length; i++) {
 
-  var cardHTML = `<section class="idea-card">
+  ideaCardGrid.innerHTML += `<section class="idea-card">
     <header class="idea-card-top">
       <img type="image" src="./assets/star-active.svg" alt="active star">
       <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
@@ -59,8 +60,6 @@ function displayNewIdea() {
     <footer class="idea-card-bottom">
       <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
   </section>`}
-
-  ideaCardGrid.innerHTML += cardHTML;
 }
 
 function emptyInput() {
