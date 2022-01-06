@@ -11,6 +11,7 @@ saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', mouseHoverEffect);
 saveButton.addEventListener('mouseout', mouseLeaving);
 ideaCardGrid.addEventListener('click', deleteSelectedCard);
+ideaCardGrid.addEventListener('click', favoriteACard);
 
 
 function saveIdea() {
@@ -35,7 +36,7 @@ function displayAllIdeas() {
     ideaCardGrid.innerHTML += `
     <section class="idea-card">
       <header class="idea-card-top">
-        <img type="image" src="./assets/star-active.svg" alt="active star">
+        <img type="image" src="./assets/star.svg" id=${list[i].imgId} alt="star">
         <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
       </header>
       <h3 class="idea-card-title">${list[i].title}</h3>
@@ -69,6 +70,15 @@ function deleteSelectedCard() {
     if (list[i].id.toString() === event.target.id) {
      list.splice(i, 1);
      displayAllIdeas();
+     }
+   }
+}
+
+function favoriteACard() {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].imgId.toString() === event.target.id) {
+      list[i].star = true;
+      
      }
    }
 }
