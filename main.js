@@ -13,12 +13,14 @@ function saveIdea() {
 
   var newTitle = titleValue.value;
   var newBody = bodyValue.value;
-  newIdea = new Idea(newTitle, newBody);
+
+  if(newTitle && newBody) {
+    newIdea = new Idea(newTitle, newBody);
+    displayNewIdea();
+  }
 
   list.push(newIdea);
-  displayNewIdea();
-
-  return newIdea;
+  emptyInput();
 }
 
 function displayNewIdea() {
@@ -34,4 +36,9 @@ function displayNewIdea() {
   </section>`;
 
   ideaCardGrid.innerHTML += cardHTML;
+}
+
+function emptyInput() {
+  titleValue.value = '';
+  bodyValue.value = '';
 }
