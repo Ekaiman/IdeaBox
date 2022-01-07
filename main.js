@@ -33,7 +33,7 @@ function displayAllIdeas() {
   ideaCardGrid.innerHTML = '';
 
   for (var i = 0; i < list.length; i++) {
-    if(!list[i].star) {
+    if (!list[i].star) {
       ideaCardGrid.innerHTML += `
       <section class="idea-card">
       <header class="idea-card-top">
@@ -90,9 +90,14 @@ function deleteSelectedCard() {
 }
 
 function favoriteACard() {
+
   for (var i = 0; i < list.length; i++) {
     if (list[i].imgId.toString() === event.target.id) {
-      list[i].star = true;
+      if (!list[i].star) {
+        list[i].star = true;
+      } else {
+        list[i].star = false;
+      }
       displayAllIdeas();
      }
    }
