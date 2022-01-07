@@ -33,17 +33,32 @@ function displayAllIdeas() {
   ideaCardGrid.innerHTML = '';
 
   for (var i = 0; i < list.length; i++) {
-    ideaCardGrid.innerHTML += `
-    <section class="idea-card">
+    if(!list[i].star) {
+      ideaCardGrid.innerHTML += `
+      <section class="idea-card">
       <header class="idea-card-top">
-        <img type="image" src="./assets/star.svg" id=${list[i].imgId} alt="star">
-        <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
+      <img type="image" src="./assets/star.svg" id=${list[i].imgId} alt="star" class="star">
+      <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
       </header>
       <h3 class="idea-card-title">${list[i].title}</h3>
       <p class="idea-card-body">${list[i].body}</p>
       <footer class="idea-card-bottom">
-        <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-    </section>`}
+      <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
+      </section>`
+    } else {
+      ideaCardGrid.innerHTML += `
+      <section class="idea-card">
+      <header class="idea-card-top">
+      <img type="image" src="./assets/star-active.svg" id=${list[i].imgId} alt="star" class="star active">
+      <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
+      </header>
+      <h3 class="idea-card-title">${list[i].title}</h3>
+      <p class="idea-card-body">${list[i].body}</p>
+      <footer class="idea-card-bottom">
+      <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
+      </section>`
+    }
+  }
 }
 
 function emptyInput() {
@@ -78,7 +93,7 @@ function favoriteACard() {
   for (var i = 0; i < list.length; i++) {
     if (list[i].imgId.toString() === event.target.id) {
       list[i].star = true;
-      
+      displayAllIdeas();
      }
    }
 }
