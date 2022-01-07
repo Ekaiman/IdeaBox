@@ -13,7 +13,8 @@ saveButton.addEventListener('mouseover', mouseHoverEffect);
 saveButton.addEventListener('mouseout', mouseLeaving);
 ideaCardGrid.addEventListener('click', deleteSelectedCard);
 ideaCardGrid.addEventListener('click', favoriteACard);
-showStarred.addEventListener('click', showFavorites)
+showStarred.addEventListener('click', showFavorites);
+// showStarred.addEventListener('click', showAllIdeas)
 
 
 function saveIdea() {
@@ -106,7 +107,7 @@ function favoriteACard() {
    }
 }
 ///need to refactor
-//fix hover when only title || body is typed in 
+//fix hover when only title || body is typed in
 function showFavorites() {
   ideaCardGrid.innerHTML = ''
   for (var i = 0; i < list.length; i++) {
@@ -123,5 +124,16 @@ function showFavorites() {
     <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
     </section>`
     }
+  }
+  changeButton();
+}
+
+function changeButton() {
+  showStarred.innerText = "Show All Ideas"
+}
+
+function showAllIdeas() {
+  if (showStarred.innerText === "Show All Ideas") {
+    displayAllIdeas();
   }
 }
