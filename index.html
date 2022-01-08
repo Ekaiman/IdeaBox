@@ -21,20 +21,20 @@
       <form class="top-grid">
       <div class="block">
         <label for="title">Title</label>
-        <input type="text" class="box title-box" id="titleValue">
+        <input type="text" class="title-box" id="titleValue" maxlength="20">
       </div>
       <div class="block">
         <label for="body">Body</label>
-        <textarea type="text" class="box body-box" id="bodyValue" cols="40" rows="5" maxlength="200"></textarea>
+        <textarea type="text" class="body-box" id="bodyValue" cols="40" rows="3" maxlength="100"></textarea>
       </div>
       <div>
         <button class="save-button" id="saveButton">Save</button>
       </div>
       <section class="search-align" id="searchContainer">
         <div class="background-image">
-          <img src="./assets/search.svg" alt="search" class="search-button" id="searchButton"/>
+          <img src="./assets/search.svg" alt="search" id="searchButton"/>
         </div>
-        <input type="text" class ="search-width" id="searchBar" placeholder="Search ideas"/>
+        <input type="text" class ="search-bar" id="searchBar" placeholder="Search ideas"/>
       </section>
     </form>
   <!-- </section> -->
