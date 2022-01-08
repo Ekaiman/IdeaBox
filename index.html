@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="left-grid">
-      <div>
+      <div class="div-container">
         <h1 class="header-text">Idea Box</h1>
         <hr>
         <h4 class="starred-idea-header">Filter Starred Ideas</h4>
@@ -17,16 +17,19 @@
         <hr>
       </div>
     </nav>
-    <form class="top-grid">
-      <div >
+    <!-- <section class="top-grid"> -->
+      <form class="top-grid">
+      <div class="block">
         <label for="title">Title</label>
         <input type="text" class="box title-box" id="titleValue">
       </div>
-      <div>
+      <div class="block">
         <label for="body">Body</label>
-        <input type="text" class="box body-box" id="bodyValue">
+        <textarea type="text" class="box body-box" id="bodyValue" cols="40" rows="5" maxlength="200"></textarea>
       </div>
-      <button class="save-button" id="saveButton">Save</button>
+      <div>
+        <button class="save-button" id="saveButton">Save</button>
+      </div>
       <section class="search-align" id="searchContainer">
         <div class="background-image">
           <img src="./assets/search.svg" alt="search" class="search-button" id="searchButton"/>
@@ -34,6 +37,7 @@
         <input type="text" class ="search-width" id="searchBar" placeholder="Search ideas"/>
       </section>
     </form>
+  <!-- </section> -->
     <form class="bottom-grid">
         <section class="grid-container" id="gridContainer"></section>
     </form>
