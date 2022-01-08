@@ -109,6 +109,8 @@ function deleteSelectedCard() {
 }
 
 function favoriteACard() {
+  // if show all button is present
+  
   for (var i = 0; i < list.length; i++) {
     if (list[i].imgId.toString() === event.target.id) {
       list[i].updateStar();

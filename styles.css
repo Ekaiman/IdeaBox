@@ -66,6 +66,7 @@ img {
 }
 
 .grid-container {
+  background-color: #EAEAF4;
   display: grid;
   grid-template-columns: auto auto auto;
   padding: 10px;
