@@ -7,10 +7,8 @@ var ideaCardGrid = document.querySelector('.grid-container');
 var showStarred = document.getElementById('showStarred');
 var showAllIdeas = document.getElementById('showAllIdeas');
 var searchBar = document.getElementById('searchBar');
-// var searchButton = document.getElementById('searchButton');
 var searchContainer = document.getElementById('searchContainer')
-// var deleteButton = document.querySelector('.delete');
-// var ideaCard = document.querySelector('.idea-card');
+
 
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', mouseHoverEffect);
@@ -18,11 +16,14 @@ saveButton.addEventListener('mouseout', mouseLeaving);
 ideaCardGrid.addEventListener('click', deleteSelectedCard);
 ideaCardGrid.addEventListener('click', favoriteACard);
 showStarred.addEventListener('click', showFavorites);
-showAllIdeas.addEventListener('click', displayAllIdeas);
+showAllIdeas.addEventListener('click', showIdeasAfterShowingStarred);
 searchBar.addEventListener('input', random);
 
-// showStarred.addEventListener('click', showAllIdeas)
-
+//fix hover when only title || body is typed in
+  //save button shouldnt click
+//fix all ids to camelCase
+//add flex
+//fix button
 
 function saveIdea() {
   event.preventDefault();
@@ -37,6 +38,10 @@ function saveIdea() {
   }
 
   emptyInput();
+}
+
+function showIdeasAfterShowingStarred() {
+  displayAllIdeas(list)
 }
 
 function displayAllIdeas(array) {
@@ -76,6 +81,7 @@ function displayAllIdeas(array) {
 function emptyInput() {
   titleValue.value = '';
   bodyValue.value = '';
+  searchBar.value = '';
 }
 
 function mouseHoverEffect() {
@@ -113,39 +119,19 @@ function favoriteACard() {
      }
    }
 }
-///need to refactor
+
 //fix hover when only title || body is typed in
 function showFavorites() {
-  ideaCardGrid.innerHTML = ''
+  var starredArray = []
   for (var i = 0; i < list.length; i++) {
     if(list[i].star){
-    ideaCardGrid.innerHTML += `
-    <section class="idea-card">
-    <header class="idea-card-top">
-    <img type="image" src="./assets/star-active.svg" id=${list[i].imgId} alt="star" class="star active">
-    <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
-    </header>
-    <h3 class="idea-card-title">${list[i].title}</h3>
-    <p class="idea-card-body">${list[i].body}</p>
-    <footer class="idea-card-bottom">
-    <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-    </section>`
-    }
+      starredArray.push(list[i])
   }
-  // changeButton();
+  displayAllIdeas(starredArray)
   show(showAllIdeas)
     hide(showStarred)
+  }
 }
-
-// function changeButton() {
-//   showStarred.innerText = "Show All Ideas"
-// }
-
-// function showAllIdeas() {
-//   if (showStarred.innerText === "Show All Ideas") {
-//     displayAllIdeas();
-//   }
-// }
 
 function show(element) {
   element.classList.remove('remove')
@@ -158,27 +144,12 @@ function hide(element) {
 function searchIdea(searchingFor) {
   event.preventDefault()
   var searchArray = [];
-  ideaCardGrid.innerHTML = ''
   for (var i = 0; i < list.length; i++) {
     if (list[i].title.includes(searchingFor) || list[i].body.includes(searchingFor)) {
-      // list[i].searched = true;
       searchArray.push(list[i])
     }
-      for (var i = 0; i < searchArray.length; i++) {
-          ideaCardGrid.innerHTML += `
-          <section class="idea-card">
-          <header class="idea-card-top">
-          <img type="image" src="./assets/star.svg" id=${searchArray[i].imgId} alt="star" class="star">
-          <img type="image" src="./assets/delete.svg" alt="delete" id=${searchArray[i].id} class="delete">
-          </header>
-          <h3 class="idea-card-title">${searchArray[i].title}</h3>
-          <p class="idea-card-body">${searchArray[i].body}</p>
-          <footer class="idea-card-bottom">
-          <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-          </section>`
-      // showSearched()
-    }
   }
+  displayAllIdeas(searchArray)
 }
 
 
@@ -187,24 +158,3 @@ function random() {
   var searchingFor = searchBar.value
   searchIdea(searchingFor)
 }
-
-// function showSearched() {
-//   event.preventDefault()
-//   ideaCardGrid.innerHTML = ''
-//   showStarred.innerText = 'Hello'
-//   for (var i = 0; i < list.length; i++) {
-//     if(list[i].searched){
-//     ideaCardGrid.innerHTML += `
-//     <section class="idea-card">
-//     <header class="idea-card-top">
-//     <img type="image" src="./assets/star.svg" id=${list[i].imgId} alt="star" class="star">
-//     <img type="image" src="./assets/delete.svg" alt="delete" id=${list[i].id} class="delete">
-//     </header>
-//     <h3 class="idea-card-title">${list[i].title}</h3>
-//     <p class="idea-card-body">${list[i].body}</p>
-//     <footer class="idea-card-bottom">
-//     <img type="image" src="./assets/comment.svg" alt="comment">Comment</footer>
-//     </section>`
-//     }
-//   }
-// }
