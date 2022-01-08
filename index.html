@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet">
     <title>Idea Box</title>
   </head>
   <body>
     <nav class="left-grid">
-      <div>
+      <div class="div-container">
         <h1 class="header-text">Idea Box</h1>
         <hr>
         <h4 class="starred-idea-header">Filter Starred Ideas</h4>
@@ -17,34 +17,27 @@
         <hr>
       </div>
     </nav>
-    <form class="top-grid">
-      <br>
-      <div >
+    <!-- <section class="top-grid"> -->
+      <form class="top-grid">
+      <div class="block">
         <label for="title">Title</label>
-        <br>
         <input type="text" class="box title-box" id="titleValue">
       </div>
-      <br>
-      <div>
+      <div class="block">
         <label for="body">Body</label>
-        <br>
-        <input type="text" class="box body-box" id="bodyValue">
+        <textarea type="text" class="box body-box" id="bodyValue" cols="40" rows="5" maxlength="200"></textarea>
       </div>
-      <br>
-      <button class="button save-button" id="saveButton">Save</button>
-      <br>
-      <br>
+      <div>
+        <button class="save-button" id="saveButton">Save</button>
+      </div>
       <section class="search-align" id="searchContainer">
-        <input type="image"
-          src="./assets/search.svg"
-          alt="search"
-          height="8"
-          width="8"
-          class="button search-button"
-          id="searchButton"/>
+        <div class="background-image">
+          <img src="./assets/search.svg" alt="search" class="search-button" id="searchButton"/>
+        </div>
         <input type="text" class ="search-width" id="searchBar" placeholder="Search ideas"/>
       </section>
     </form>
+  <!-- </section> -->
     <form class="bottom-grid">
         <section class="grid-container" id="gridContainer"></section>
     </form>
