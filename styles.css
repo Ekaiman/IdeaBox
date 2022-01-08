@@ -151,6 +151,7 @@ img {
   margin: 0;
 }
 
+.show-all-ideas,
 .starred-idea-button {
   background-color: #5356A4;
   color: #E9E9F3;
@@ -164,6 +165,7 @@ img {
   margin-left: 20px;
   /* display: inline-block; */
 }
+
 
 .search-width {
   width:38%;
