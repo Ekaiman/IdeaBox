@@ -46,6 +46,11 @@ img {
   height: 45%;
   margin-left: 25%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  align-items: stretch;
 }
 
 .bottom-grid {
@@ -113,10 +118,10 @@ img {
 
 }
 
-.box {
+/* .box {
   border-color: #1F1F3D;
   border-width: 1px;
-}
+} */
 
 .body-box {
   height: 60px;
@@ -128,16 +133,11 @@ img {
   height: 25px;
 }
 
-.button {
-  background-color: #1F1F3D;
-  border-color: #1F1F3D;
-  border-width: 1px;
-  color: #E9E9F3;
-}
-
 .save-button {
   width: 40%;
   height: 25px;
+  background-color: #353567;
+  color: #E9E9F3;
 }
 
 .hover-button {
@@ -146,9 +146,18 @@ img {
 }
 
 .search-button {
+  height: 20px;
+  width: 20px;
+  margin: 0;
+}
+
+.background-image {
   height: 25px;
   width: 25px;
-  margin: 0;
+  background-color: #353567;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-all-ideas,
@@ -180,4 +189,12 @@ img {
 
 .remove {
   display: none;
+}
+
+.title-box,
+.body-box,
+.save-button {
+  width: 40%;
+  border-style: solid;
+  border-color: #5C5EA9
 }
