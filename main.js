@@ -1,29 +1,43 @@
 var list = [];
 
-var titleValue = document.getElementById('title-value');
-var bodyValue = document.getElementById('body-value');
-var saveButton = document.getElementById('save-button');
-var ideaCardGrid = document.querySelector('.grid-container');
-var showStarred = document.getElementById('showStarred');
-var showAllIdeas = document.getElementById('showAllIdeas');
+var saveButton = document.getElementById('saveButton');
+var showStarredButton = document.getElementById('showStarred');
+var showAllIdeasButton = document.getElementById('showAllIdeas');
+var titleValue = document.getElementById('titleValue');
+var bodyValue = document.getElementById('bodyValue');
 var searchBar = document.getElementById('searchBar');
-var searchContainer = document.getElementById('searchContainer')
-
+var ideaCardGrid = document.getElementById('gridContainer');
 
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', mouseHoverEffect);
 saveButton.addEventListener('mouseout', mouseLeaving);
+showStarredButton.addEventListener('click', showFavorites);
+showAllIdeasButton.addEventListener('click', showIdeasAfterShowingStarred);
 ideaCardGrid.addEventListener('click', deleteSelectedCard);
 ideaCardGrid.addEventListener('click', favoriteACard);
-showStarred.addEventListener('click', showFavorites);
-showAllIdeas.addEventListener('click', showIdeasAfterShowingStarred);
-searchBar.addEventListener('input', random);
+searchBar.addEventListener('input', grabSearchValue);
 
-//fix hover when only title || body is typed in
-  //save button shouldnt click
-//fix all ids to camelCase
+  //save button shouldnt click**** ask later
 //add flex
 //fix button
+//oranize CSS stuff
+function mouseHoverEffect() {
+  if (!titleValue.value || !bodyValue.value) {
+    saveButton.classList.add('hover-button');
+  }
+}
+
+function mouseLeaving() {
+  saveButton.classList.remove('hover-button');
+}
+
+function show(element) {
+  element.classList.remove('remove');
+}
+
+function hide(element) {
+  element.classList.add('remove');
+}
 
 function saveIdea() {
   event.preventDefault();
@@ -31,21 +45,23 @@ function saveIdea() {
   var newTitle = titleValue.value;
   var newBody = bodyValue.value;
 
-  if(newTitle && newBody) {
+  if (newTitle && newBody) {
     var newIdea = new Idea(newTitle, newBody);
     list.push(newIdea);
     displayAllIdeas(list);
+    emptyInput();
   }
-
-  emptyInput();
 }
 
-function showIdeasAfterShowingStarred() {
-  displayAllIdeas(list)
+function emptyInput() {
+  titleValue.value = '';
+  bodyValue.value = '';
+  searchBar.value = '';
 }
 
 function displayAllIdeas(array) {
   ideaCardGrid.innerHTML = '';
+
   for (var i = 0; i < array.length; i++) {
     if (!array[i].star) {
       ideaCardGrid.innerHTML += `
@@ -73,30 +89,15 @@ function displayAllIdeas(array) {
       </section>`
     }
   }
-  hide(showAllIdeas)
-  show(showStarred)
+
+  hide(showAllIdeasButton);
+  show(showStarredButton);
 }
 
-
-function emptyInput() {
-  titleValue.value = '';
-  bodyValue.value = '';
-  searchBar.value = '';
+function showIdeasAfterShowingStarred() {
+  displayAllIdeas(list)
 }
 
-function mouseHoverEffect() {
-  if (!titleValue.value && !bodyValue.value) {
-    saveButton.classList.add('hover-button');
-  }
-}
-
-function mouseLeaving() {
-  saveButton.classList.remove('hover-button');
-}
-
-function removeIdea() {
-  ideaCardGrid.classList.toggle('remove');
-}
 
 function deleteSelectedCard() {
   for (var i = 0; i < list.length; i++) {
@@ -110,51 +111,35 @@ function deleteSelectedCard() {
 function favoriteACard() {
   for (var i = 0; i < list.length; i++) {
     if (list[i].imgId.toString() === event.target.id) {
-      if (!list[i].star) {
-        list[i].star = true;
-      } else {
-        list[i].star = false;
-      }
+      list[i].updateStar();
       displayAllIdeas(list);
      }
    }
 }
 
-//fix hover when only title || body is typed in
 function showFavorites() {
   var starredArray = []
   for (var i = 0; i < list.length; i++) {
-    if(list[i].star){
+    if (list[i].star) {
       starredArray.push(list[i])
+    }
+    displayAllIdeas(starredArray);
+    show(showAllIdeasButton);
+    hide(showStarredButton);
   }
-  displayAllIdeas(starredArray)
-  show(showAllIdeas)
-    hide(showStarred)
-  }
 }
 
-function show(element) {
-  element.classList.remove('remove')
+function grabSearchValue() {
+  var searchingFor = searchBar.value
+  searchIdeasByInput(searchingFor)
 }
 
-function hide(element) {
-  element.classList.add('remove')
-}
-
-function searchIdea(searchingFor) {
-  event.preventDefault()
+function searchIdeasByInput(searchingFor) {
   var searchArray = [];
   for (var i = 0; i < list.length; i++) {
     if (list[i].title.includes(searchingFor) || list[i].body.includes(searchingFor)) {
-      searchArray.push(list[i])
+      searchArray.push(list[i]);
     }
   }
-  displayAllIdeas(searchArray)
-}
-
-
-function random() {
-  event.preventDefault()
-  var searchingFor = searchBar.value
-  searchIdea(searchingFor)
+  displayAllIdeas(searchArray);
 }

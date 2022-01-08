@@ -9,6 +9,14 @@ class Idea {
     this.searched = false;
   }
 
+  updateStar() {
+    if (!this.star) {
+      this.star = true;
+    } else {
+      this.star = false;
+    }
+  }
+
   saveToStorage() {
 
   }
