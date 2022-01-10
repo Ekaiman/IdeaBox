@@ -28,5 +28,4 @@ This project allows users to create and save their ideas to a board as cards wit
 - In this view, the Show Starred Ideas button will change to Show All Ideas button. When the user clicks the Show All Ideas button, the page will display all the idea cards and the button will change back to Show Starred Ideas.
 - The user can filter idea cards by typing in the Search Ideas field.
 ## Future Additions
-- In the favorited cards view, the user could save another card without the view changing back to all idea cards.
-- Refine filter function to filter for both capitalized and lowercase letters.
+- Implement a character countdown in both the Title and Body fields to countdown how many remaining characters a user has left to type in.
