@@ -140,7 +140,7 @@ function favoriteACard() {
 
 function showFavorites() {
   var starredArray = []
-  
+
   for (var i = 0; i < list.length; i++) {
     if (list[i].star) {
       starredArray.push(list[i])
@@ -159,14 +159,15 @@ function showFavorites() {
 }
 
 function grabSearchValue() {
-  var searchingFor = searchBar.value
+  var searchingFor = searchBar.value.toLowerCase()
   searchIdeasByInput(searchingFor)
 }
 
 function searchIdeasByInput(searchingFor) {
   var searchArray = [];
+
   for (var i = 0; i < list.length; i++) {
-    if (list[i].title.includes(searchingFor) || list[i].body.includes(searchingFor)) {
+    if (list[i].title.toLowerCase().includes(searchingFor) || list[i].body.toLowerCase().includes(searchingFor)) {
       searchArray.push(list[i]);
     }
   }
