@@ -1,45 +1,63 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300"
+      rel="stylesheet"
+    />
     <title>Idea Box</title>
   </head>
   <body>
     <nav class="left-grid">
       <div class="div-container">
         <h1 class="header-text">Idea Box</h1>
-        <hr>
+        <hr />
         <h4 class="starred-idea-header">Filter Starred Ideas</h4>
-        <button class="starred-idea-button" id="showStarred">Show Starred Ideas</button>
-        <button class="show-all-ideas remove" id="showAllIdeas">Show All Ideas</button>
-        <hr>
+        <button class="starred-idea-button" id="showStarred">
+          Show Starred Ideas
+        </button>
+        <button class="show-all-ideas remove" id="showAllIdeas">
+          Show All Ideas
+        </button>
+        <hr />
       </div>
     </nav>
-    <!-- <section class="top-grid"> -->
-      <form class="top-grid">
-      <div class="block">
+    <form class="top-grid">
+      <section class="label-input-wrapper">
         <label for="title">Title</label>
-        <input type="text" class="title-box" id="titleValue" maxlength="20">
-      </div>
-      <div class="block">
+        <input type="text" class="title-box" id="titleValue" maxlength="20" />
+      </section>
+      <section class="label-input-wrapper">
         <label for="body">Body</label>
-        <textarea type="text" class="body-box" id="bodyValue" cols="40" rows="3" maxlength="100"></textarea>
-      </div>
-      <div>
-        <button class="save-button" id="saveButton">Save</button>
-      </div>
+        <textarea
+          type="text"
+          class="body-box"
+          id="bodyValue"
+          cols="40"
+          rows="3"
+          maxlength="100"
+        ></textarea>
+      </section>
+      <button class="save-button" id="saveButton">Save</button>
       <section class="search-align" id="searchContainer">
         <div class="background-image">
           <img src="./assets/search.svg" alt="search" id="searchButton"/>
         </div>
-        <input type="text" class ="search-bar" id="searchBar" placeholder="Search ideas"/>
+        <input
+          type="text"
+          class="search-bar"
+          id="searchBar"
+          placeholder="Search ideas"
+        />
       </section>
     </form>
-  <!-- </section> -->
     <form class="bottom-grid">
-        <section class="grid-container" id="gridContainer"></section>
+      <p class="no-starred-ideas remove" id="noStarredIdeas">
+        You have not starred any ideas.
+      </p>
+      <section class="grid-container" id="gridContainer"></section>
     </form>
     <script type="text/javascript" src="Idea.js"></script>
     <script type="text/javascript" src="main.js"></script>
