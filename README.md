@@ -29,3 +29,4 @@ This project allows users to create and save their ideas to a board as cards wit
 - The user can filter idea cards by typing in the Search Ideas field.
 ## Future Additions
 - Implement a character countdown in both the Title and Body fields to countdown how many remaining characters a user has left to type in.
+- When in starred view and using filter, implement a feature that only searches through currently starred cards, not all cards.
